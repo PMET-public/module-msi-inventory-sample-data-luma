@@ -8,10 +8,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Magento_MsiLumaInventorySampleData">
         <sequence>
-            <module name="Magento_InventoryApi"/>
-            <module name="Magento_InventorySalesApi"/>
-            <module name="Magento_CatalogSampleData"/>
             <module name="Magento_MsiSourceStockSampleData" />
+            <module name="Magento_MsiInventorySampleData" />
         </sequence>
     </module>
 </config>
