@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\MsiLumaInventorySampleData\Setup\Patch\Data;
+namespace Magento\MsiInventorySampleDataLuma\Setup\Patch\Data;
 
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -13,8 +13,8 @@ use Magento\MsiInventorySampleData\Model\InstallInventoryData as SampleData;
 
 
 /**
- * Class InstallInventory
- * @package Magento\MsiLumaInventorySampleData\Setup\Patch\Data
+ * Class InstallLumaInventory
+ * @package Magento\MsiInventorySampleDataLuma\Setup\Patch\Data
  */
 class InstallLumaInventory implements DataPatchInterface
 {
@@ -50,7 +50,7 @@ class InstallLumaInventory implements DataPatchInterface
 
     public function apply()
     {
-        $this->sampleData->addInventory(['Magento_MsiLumaInventorySampleData::fixtures/luma_msi_inventory.csv']);
+        $this->sampleData->addInventory(['Magento_MsiInventorySampleDataLuma::fixtures/luma_msi_inventory.csv']);
     }
 
     /**
