@@ -4,19 +4,17 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\MsiInventorySampleDataLuma\Setup\Patch\Data;
+namespace Magento\MsiInventorySampleDataRef\Setup\Patch\Data;
 
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
 use Magento\MsiInventorySampleData\Model\InstallInventoryData as SampleData;
+use Magento\MsiInventorySampleData\Model\MoveInventoryFromDefault as MoveInventory;
 
 
-/**
- * Class InstallLumaInventory
- * @package Magento\MsiInventorySampleDataLuma\Setup\Patch\Data
- */
-class InstallLumaInventory implements DataPatchInterface
+
+class InstallRefInventory implements DataPatchInterface
 {
 
     /** @var ModuleDataSetupInterface  */
@@ -27,30 +25,37 @@ class InstallLumaInventory implements DataPatchInterface
      */
     protected $fixtureManager;
 
-    /** @var SampleData\  */
+    /** @var SampleData  */
     protected $sampleData;
 
+    /** @var MoveInventory  */
+    protected $moveInventory;
+
     /**
-     * InstallLumaInventory constructor.
+     * InstallVeniaInventory constructor.
      * @param SampleDataContext $sampleDataContext
      * @param ModuleDataSetupInterface $moduleDataSetup
      * @param SampleData $sampleData
+     * @param MoveInventory $moveInventoryFromDefault
      */
     public function __construct(
         SampleDataContext $sampleDataContext,
         ModuleDataSetupInterface $moduleDataSetup,
-        SampleData $sampleData
-       )
+        SampleData $sampleData,
+        MoveInventory $moveInventoryFromDefault
+    )
     {
         $this->moduleDataSetup = $moduleDataSetup;
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
         $this->sampleData = $sampleData;
+        $this->moveInventory = $moveInventoryFromDefault;
     }
 
 
     public function apply()
     {
-        $this->sampleData->addInventory(['Magento_MsiInventorySampleDataLuma::fixtures/luma_msi_inventory.csv']);
+        $this->sampleData->addInventory(['Magento_MsiInventorySampleDataRef::fixtures/luma_msi_inventory.csv']);
+        $this->moveInventory->transfer('us_warehouse');
     }
 
     /**
